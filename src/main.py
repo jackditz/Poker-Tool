@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from src.api.routes import router as api_router
+from src.api.capture_routes import router as capture_router
 from src.api.websocket import router as ws_router
 from src.deps import set_session_factory
 from src.models.database import create_db_engine, create_session_factory
@@ -22,6 +23,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Poker Tracker", version="0.1.0", lifespan=lifespan)
 
 app.include_router(api_router)
+app.include_router(capture_router)
 app.include_router(ws_router)
 
 # Mount static files if the directory exists
