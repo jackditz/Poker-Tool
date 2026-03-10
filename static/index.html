@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Tracker HUD</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Poker Tracker</h1>
+        <div class="session-controls">
+            <select id="gameType">
+                <option value="cash_6max">Cash 6-Max</option>
+                <option value="cash_9max">Cash 9-Max</option>
+                <option value="tournament">Tournament</option>
+                <option value="sng">Sit &amp; Go</option>
+            </select>
+            <input type="text" id="stakes" placeholder="Stakes (e.g. 0.05/0.10)" style="width: 140px;">
+            <button id="startSession">Start Session</button>
+            <button id="endSession" class="secondary" style="display:none;">End Session</button>
+            <span id="connectionStatus" class="connection-status disconnected">Disconnected</span>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <!-- HUD Display -->
+        <div class="hud-panel">
+            <div class="poker-table" id="pokerTable">
+                <!-- Seats are dynamically created -->
+            </div>
+        </div>
+
+        <!-- Manual Action Input -->
+        <div class="action-panel">
+            <h2>Manual Input</h2>
+
+            <div class="hand-controls">
+                <button id="newHand">New Hand</button>
+            </div>
+
+            <div class="hand-info" id="handInfo">
+                No active session
+            </div>
+
+            <h3>Select Seat</h3>
+            <div class="seat-selector" id="seatSelector"></div>
+
+            <h3>Street</h3>
+            <div class="street-selector" id="streetSelector">
+                <button data-street="preflop" class="active">Pre-flop</button>
+                <button data-street="flop">Flop</button>
+                <button data-street="turn">Turn</button>
+                <button data-street="river">River</button>
+            </div>
+
+            <h3>Position (optional)</h3>
+            <div class="seat-selector" id="positionSelector">
+                <button data-pos="SB">SB</button>
+                <button data-pos="BB">BB</button>
+                <button data-pos="UTG">UTG</button>
+                <button data-pos="MP">MP</button>
+                <button data-pos="CO">CO</button>
+                <button data-pos="BTN">BTN</button>
+            </div>
+
+            <h3>Action</h3>
+            <div class="action-buttons">
+                <button class="fold" data-action="fold">Fold</button>
+                <button class="call" data-action="check">Check</button>
+                <button class="call" data-action="call">Call</button>
+                <button class="raise" data-action="bet">Bet</button>
+                <button class="raise" data-action="raise">Raise</button>
+                <button class="raise" data-action="all_in">All-In</button>
+            </div>
+
+            <div class="amount-input">
+                <input type="number" id="betAmount" placeholder="Amount" step="0.01">
+            </div>
+
+            <h3>Action Log</h3>
+            <div class="action-log" id="actionLog"></div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
