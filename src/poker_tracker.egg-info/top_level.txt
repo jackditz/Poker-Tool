@@ -1,9 +1,0 @@
-__init__
-api
-calibration
-capture
-engine
-main
-models
-ocr
-parser
